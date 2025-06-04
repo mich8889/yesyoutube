@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'; // Keep useEffect and useState imports
 import { supabase } from '../supabaseClient';
 import { getYouTubeVideoId } from '../utils/youtube';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { ListMusic, Video as VideoIcon } from 'lucide-react'; // Renamed imported Video to VideoIcon
+import { ListMusic, Video as VideoIcon } from 'lucide-react';
 
-interface PlaylistVideo { // Renamed interface from Video to PlaylistVideo
+interface PlaylistVideo {
   id: string;
   title: string;
   url: string;
 }
 
 function PlaylistPage() {
-  const [videos, setVideos] = useState<PlaylistVideo[]>([]); // Use PlaylistVideo interface
+  const [videos, setVideos] = useState<PlaylistVideo[]>([]);
   const [selectedVideoId, setSelectedVideoId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -68,7 +68,7 @@ function PlaylistPage() {
       <div className="md:col-span-2">
         <Card className="h-full flex flex-col">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2"><VideoIcon className="size-5" /> Video Player</CardTitle> {/* Use VideoIcon */}
+            <CardTitle className="flex items-center gap-2"><VideoIcon className="size-5" /> Video Player</CardTitle>
           </CardHeader>
           <CardContent className="flex-grow flex items-center justify-center p-0">
             {loading ? (

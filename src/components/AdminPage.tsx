@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'; // Keep useState and useEffect imports
 import { supabase } from '../supabaseClient';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Loader2, Lock, PlusCircle, Trash2, ListMusic } from 'lucide-react'; // Added ListMusic here
+import { Loader2, Lock, PlusCircle, Trash2, ListMusic } from 'lucide-react';
 
 interface Video {
   id: string;
@@ -96,7 +96,8 @@ function AdminPage() {
       return;
     }
 
-    const { data, error } = await supabase
+    // Destructure only error, ignore data as it's not used
+    const { error } = await supabase
       .from('youtube_videos')
       .insert([{ title: newVideoTitle, url: newVideoUrl }]);
 
